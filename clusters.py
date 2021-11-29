@@ -51,7 +51,7 @@ isolated_office = dict(
     },
     spent_past_year={
         'value':20_000,
-        'std':6_000,
+        'std':4_000,
     },
     state=None,
     industry=[
@@ -122,7 +122,7 @@ blue_collars = dict(
     # Person
     age_median={
         'value':35,
-        'std':8,
+        'std':5,
     },
     education_average=[
         ('High School', 0.4),
@@ -163,8 +163,8 @@ active_workers = dict(
     ],
     # Person
     age_median={
-        'value':32,
-        'std':6,
+        'value':28,
+        'std':4,
     },
     education_average=[
         ('High School', 0.4),
@@ -178,10 +178,10 @@ active_workers = dict(
 
 
 businesses = {
-    'focused_tech': (focused_tech, 100),
-    'isolated_office': (isolated_office, 250),
-    'blue_collars': (blue_collars, 100),
-    'active_workers': (active_workers, 250),
+    'focused_tech': (focused_tech, 200),
+    'isolated_office': (isolated_office, 450),
+    'blue_collars': (blue_collars, 200),
+    'active_workers': (active_workers, 550),
 }
 
 ####
@@ -207,7 +207,7 @@ def generate_data(centers, size=1):
             if key == 'phone_number':
                 data_point[key] = generate_fake_phone()
             elif key == 'state':
-                data_point[key] = fake.state_abbr()
+                data_point[key] = [fake.state_abbr() for _ in range(size)]
             else:
                 data_point[key] = [None]*size
         elif type(data) is list:
